@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_housekeeping_staff_entry_form" model="ir.ui.view">
+        <field name="name">house.keeping.staff.entry.form</field>
+        <field name="model">house.keeping.staff.entry</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Staff Entry">
+                <sheet>
+                    <group>
+                        <field name="staff_id"/>
+                        <field name="check_in"/>
+                        <field name="check_out"/>
+                        <field name="service_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_housekeeping_staff_entry_list" model="ir.ui.view">
+        <field name="name">house.keeping.staff.entry.list</field>
+        <field name="model">house.keeping.staff.entry</field>
+        <field name="arch" type="xml">
+            <list string="Housekeeping Staff Entry">
+                <field name="staff_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="service_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_staff_entry" model="ir.actions.act_window">
+        <field name="name">Housekeeping Staff Entry</field>
+        <field name="res_model">house.keeping.staff.entry</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Track the staff entry for housekeeping maintenance</field>
+    </record>
+
+</odoo>

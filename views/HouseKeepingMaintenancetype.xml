@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_housekeeping_maintenance_type_form" model="ir.ui.view">
+        <field name="name">house.keeping.maintenance.type.form</field>
+        <field name="model">house.keeping.maintenance.type</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Maintenance Type">
+                <sheet>
+                        <h1><field name="name"/></h1>
+                    <group>
+                        <field name="staff_ids" widget="many2many_tags"/>
+                        <field name="checklist_service_ids" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page name="maintenance_service" string="Maintenance Services">
+                            <field name="maintenance_service_ids"/>
+                        </page>
+                    </notebook>
+                    <!-- <group>
+                        <field name="maintenance_service_ids"/>
+                    </group> -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_housekeeping_maintenance_type_list" model="ir.ui.view">
+        <field name="name">house.keeping.maintenance.type.list</field>
+        <field name="model">house.keeping.maintenance.type</field>
+        <field name="arch" type="xml">
+            <list string="Housekeeping Maintenance Type">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_maintenance_type" model="ir.actions.act_window">
+        <field name="name">Housekeeping Maintenance Type</field>
+        <field name="res_model">house.keeping.maintenance.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage different maintenance types for housekeeping</field>
+    </record>
+
+</odoo>

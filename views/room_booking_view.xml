@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Form View -->
+    <record id="room_booking_view_form" model="ir.ui.view">
+    <field name="name">room.booking.view.form</field>
+    <field name="model">room.booking</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button name="action_add_room" type="object" string="Add Extra Room" class="btn btn-warning"/>
+                <button name="confirm_button" type="object" string="Confirm" class="btn btn-success" invisible="status == 'confrimed'"/>
+                <button name="cancel_button" type="object" string="Cancel" class="btn btn-danger" />
+                <button name="create_invoice" type="object" string="Create Invoice" class="btn btn-success" invisible="status == 'draft'"/>
+                <field name="status" widget="statusbar" statusbar_visible="draft,confrimed,cancel"/>
+            </header>
+                <sheet>
+                    <div>
+                        <h1><field name="booking_id" /></h1>
+                    </div>
+                    <group>
+                        <group string="Guest Details">
+                            <field name="guest_id"/>
+                            <field name="phone" />
+                            <field name="guest_proof" widget="radio" />
+                            <field name="email" />
+                        </group>
+                        <group string="Check-In Check-In Details">
+                            <field name="check_in" readonly="1"/>
+                            <field name="check_out" readonly="1"/>
+                        </group>
+                        <group  string="Hotel">
+                            <field name="hotel_id" readonly="1"/>
+                        </group>
+                        <group string='Total Staying Members'>
+                            <field name="room_id" invisible="1"/>
+                            <field name="adult" readonly="1"/>
+                            <field name="children" readonly="1"/>
+                        </group>
+                        <group string="Price_list" invisible="1">
+                            <field name="price_list_id" />
+                        </group>
+                        <notebook>
+                            <page  string="Booking">
+                                <field name="bookingorderlines_ids">
+                                    <list create="0">
+                                        <field name="room_id" />
+                                        <field name="room_type" />
+                                        <field name="price" />
+                                        <field name="discount" column_invisible="1"/>
+                                        <button name="add_meal" type="object" string="Add Meal" class="oe_highlight"/>
+
+                                        <field name="amount" />
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="name" string="Guest Details" invisible="show_guest_tab == False">
+                                <field name="guest_ids">
+                                    
+                
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+        </form>
+    </field>
+    </record>
+
+<!-- List View -->
+    <record id="hotel_booking_view_list" model="ir.ui.view">
+        <field name="name">room.booking.view.list</field>
+        <field name="model">room.booking</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="booking_id" />
+                <field name="guest_id" />
+                <field name="check_in" />
+                <field name="check_out" />
+                <field name="hotel_id" />
+                <field name="room_id" />
+            </list>
+        </field>
+    </record>
+    <!-- KANBAN -->
+
+    <record id="hotel_room_booking_kanban_view" model="ir.ui.view">
+        <field name="name">room.booking.kanban.view</field>
+        <field name="model">room.booking</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_view">
+                <field name="status"/>
+                <templates>
+                    <t t-name="kanban-box">
+                    <div>
+                        <widget name="web_ribbon" title="confirmed"
+                                invisible="status != 'confrimed'"
+                                bg_color="text-bg-danger" />
+                        <div t-if="record.status.raw_value == 'confrimed'">
+                            <span>Confirmed</span>
+                        </div>
+                        <div t-if="record.status.raw_value == 'cancel'">
+                            <span>Cancelled</span>
+                        </div>
+                        <div>
+                            <!-- <field name="" /> -->
+                        </div>
+
+                        <div>
+                            <strong>
+                                <field name="booking_id"/>
+                            </strong>
+                            <div>
+                                <span>Check In: <field name="check_in"/></span>
+                                <span>Check Out: <field name="check_out"/></span>
+                            </div>
+                            <div>
+                                <span>Adults: <field name="adult"/></span>
+                                <span>Children: <field name="children"/></span>
+                            </div>
+                        </div>
+                    </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hotel_room_booking_action" model="ir.actions.act_window">
+        <field name="name">room booking</field>
+        <field name="res_model">room.booking</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+</odoo>

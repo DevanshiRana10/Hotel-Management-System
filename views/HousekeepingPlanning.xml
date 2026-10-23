@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_housekeeping_planning_form" model="ir.ui.view">
+        <field name="name">housekeeping.planning.form</field>
+        <field name="model">housekeeping.planning</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Planning">
+                <sheet>
+                    <group>
+                        <!-- <field name="name"/> -->
+                        <field name="staff"/>
+                        <field name="room_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="maintenance_type_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_housekeeping_planning_list" model="ir.ui.view">
+        <field name="name">housekeeping.planning.list</field>
+        <field name="model">housekeeping.planning</field>
+        <field name="arch" type="xml">
+            <list string="Housekeeping Planning">
+                <field name="name"/>
+                <field name="staff"/>
+                <field name="maintenance_type_ids"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_planning" model="ir.actions.act_window">
+        <field name="name">Housekeeping Planning</field>
+        <field name="res_model">housekeeping.planning</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Plan housekeeping maintenance and assign staff</field>
+    </record>
+</odoo>

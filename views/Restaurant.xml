@@ -1,0 +1,46 @@
+<odoo>
+<!-- FORM VIEW -->
+
+    <record id="view_restaurant_form" model="ir.ui.view">
+        <field name="name">restaurant.form</field>
+        <field name="model">resturant</field>
+        <field name="arch" type="xml">
+            <form string="Restaurant">
+                <sheet>
+                    <div><h1><field name="name" /></h1>
+                    </div>
+                    <group>
+                        <field name="hotel_id"/>
+                        <notebook>
+                            <page string="Food">
+                                <field name="food_ids" widget="many2many_kanban" options="{'kanban_view_ref': 'hotel_management_module.food_kanban'}" style="display: inline-block; min-width: max-content;"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- LIST VIEW -->
+
+    <record id="view_restaurant_list" model="ir.ui.view">
+        <field name="name">restaurant.list</field>
+        <field name="model">resturant</field>
+        <field name="arch" type="xml">
+            <list string="Restaurant">
+                <field name="name" />
+                <field name="hotel_id"/>
+            </list>
+        </field>
+    </record>
+
+<!-- ACTION -->
+
+    <record id="action_restaurant" model="ir.actions.act_window">
+        <field name="name">Restaurant</field>
+        <field name="res_model">resturant</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage restaurant bookings and food items</field>
+    </record>
+</odoo>

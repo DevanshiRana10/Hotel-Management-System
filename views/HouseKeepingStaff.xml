@@ -1,0 +1,47 @@
+<odoo>
+    <record id="view_housekeeping_staff_form" model="ir.ui.view">
+        <field name="name">house.keeping.staff.form</field>
+        <field name="model">house.keeping.staff</field>
+        <field name="arch" type="xml">
+            <form string="House Keeping Staff">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="age"/>
+                        <field name="job_profile"/>
+                        <field name="proof_photo"/>
+                    </group>
+                    <group>
+                        <field name="hotel_id"/>
+                        <field name="room_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_housekeeping_staff_list" model="ir.ui.view">
+        <field name="name">house.keeping.staff.list</field>
+        <field name="model">house.keeping.staff</field>
+        <field name="arch" type="xml">
+            <list string="House Keeping Staff">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="age"/>
+                <field name="job_profile"/>
+                <field name="hotel_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_staff" model="ir.actions.act_window">
+        <field name="name">House Keeping Staff</field>
+        <field name="res_model">house.keeping.staff</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage all house keeping staff</field>
+    </record>
+
+</odoo>

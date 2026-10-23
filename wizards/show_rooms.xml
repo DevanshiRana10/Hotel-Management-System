@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="show_rooms_wizard_form" model="ir.ui.view">
+            <field name="name">show.rooms.wizard.form</field>
+            <field name="model">show.rooms.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Find Rooms For You !!">
+                    <group>
+                        <group  string="Check-In Check-Out">
+                            <field name="check_in" widget='daterange'/>
+                            <field name="check_out" widget='daterange'/>
+                        </group>
+                        <!-- <field name="person" /> -->
+                        <field name="hotel_id" readonly="1" invisible="1"/>
+                        <group  string="Members">
+                            <field name="adult" />
+                            <field name="children" />                        
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Confrim" name="confrim_button" type="object" class="oe_highlight">
+                        </button>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="show_rooms_action" model="ir.actions.act_window">
+            <field name="name">Show Rooms Wizard</field>
+            <field name="res_model">show.rooms.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="show_rooms_wizard_form" />
+            <field name="target">new</field>
+            <field name="context">{'default_hotel_id': active_id}</field> <!-- Pass the current hotel_id -->
+
+        </record>
+    </data>
+</odoo>

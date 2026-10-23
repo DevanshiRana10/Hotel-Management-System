@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- FORM FORM -->
+    <record id="booking_order_form_view" model="ir.ui.view">
+    <field name="name">book.order.lines.form</field>
+    <field name="model">book.order.lines</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                   <field name="room_id" />
+                   <field name="floor" />
+                   <field name="room_type" />
+                    <field name="price" />
+                   <field name="discount" />
+                   <field name="amount" />
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+<!-- LIST VIEW -->
+    <record id="booking_order_line_view" model="ir.ui.view">
+    <field name="name">book.order.lines.list</field>
+    <field name="model">book.order.lines</field>
+    <field name="arch" type="xml">
+        <list >
+            <field name="room_id" />
+            <field name="floor" />
+            <field name="room_type" />
+            <field name="price" />
+            <field name="discount" />
+            <field name="amount" />
+        </list>
+    </field>
+    </record>
+
+<!-- ACTION -->
+
+    <record id="booking_order_lines_action" model="ir.actions.act_window">
+        <field name="name">Booking order lines action</field>
+        <field name="res_model">book.order.lines</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

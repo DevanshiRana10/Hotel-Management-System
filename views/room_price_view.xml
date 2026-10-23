@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Form View -->
+    <record id="room_price_form_view" model="ir.ui.view">
+    <field name="name">room.price.view.form</field>
+    <field name="model">room.price</field>
+    <field name="arch" type="xml">
+        <form string="Pricelist Rule">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="hotel_id" />
+                    </group>
+                    </group>
+                    <notebook>
+                        <page string="Price Rules">
+                            <field name="pricelist_item_ids">
+                                <list>
+                                    <field name="room_type_id"/>
+                                    <field name="season_id"/>
+                                    <field name="discount_type"/>
+                                    <field name="discount_fixed" invisible="discount_type not in 'fixed'"/>
+                                    <field name="discount_percentage" invisible="discount_type not in 'percentage'"/>
+                                    <field name="final_price"/>
+                                </list>
+                                <form string="Create Price Rules">
+                                    <group>
+                                        <group string="price list">
+                                            <field name="pricelist_id" readonly="1"/>
+                                            <field name="hotel_id" />
+                                            <field name="room_type_id"/>
+                                        </group>
+                                        <group  string="What To Apply">
+                                            <field name="select_pl" widget="radio" />
+                                        </group>
+
+                                        <group string="Season" invisible="select_pl == 'discount'">
+                                            <field name="season_id" />
+                                            <field name="increase_price" />
+                                        </group>
+
+                                        <group string="Discount" invisible="select_pl == 'season'">
+                                            <field name="discount_type" widget="radio"/>
+                                            <field name="discount_fixed" invisible="discount_type == 'percentage'"/>
+                                            <field name="discount_percentage" invisible="discount_type == 'fixed'"/>
+                                        </group>
+                                        <group  string="Validity">
+                                            <field name="start_date" widget="daterange" options="{'related_end_date': 'end_date'}" />
+                                            <field name="end_date" widget="daterange" options="{'related_start_date': 'start_date'}"/>
+                                        </group>
+
+                                        <group>
+                                            <field name="base_price"/>
+                                            <field name="final_price" readonly="1"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+<!-- List View -->
+    <record id="room_price_list_view" model="ir.ui.view">
+        <field name="name">room.type.view.list</field>
+        <field name="model">room.price</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="hotel_id" />
+                <!-- <field name="discount_type"/>
+                <field name="price"/>
+                <field name="discount_value"/>  -->
+            </list>
+        </field>
+    </record>
+
+    <record id="room_price_action" model="ir.actions.act_window">
+        <field name="name">room type</field>
+        <field name="res_model">room.price</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
+<!-- discount_type not in 'fixed' -->

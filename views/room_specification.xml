@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Form View -->
+    <record id="room_specification_form_view" model="ir.ui.view">
+    <field name="name">room.specification.form</field>
+    <field name="model">room.specification</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                   <field name="name" /> 
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+<!-- List View -->
+    <record id="room_specification_list_view" model="ir.ui.view">
+        <field name="name">room.specification.list</field>
+        <field name="model">room.specification</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="room_specification_action" model="ir.actions.act_window">
+        <field name="name">room specification</field>
+        <field name="res_model">room.specification</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

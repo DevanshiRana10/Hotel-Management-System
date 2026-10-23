@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="hotel_menu"
+        name="Hotel Management"
+        action="hotel_user_view_action"
+        sequence="10"/>
+
+        <menuitem
+            id="room_booking_menu"
+            name="Bookings"
+            action="hotel_room_booking_action"
+            parent="hotel_menu"
+            sequence="20"/>
+        <menuitem
+            id="configuration_menu"
+            name="Configuration"
+            parent="hotel_menu"
+            sequence="30"/>
+        <menuitem
+            id="sub_config_Hotel_menu"
+            name="Hotel"
+            parent="configuration_menu"
+            sequence="10"/>
+        <menuitem
+            id="hotel_admin_menu"
+            name="Hotel Admin"
+            action="hotel_action"
+            parent="sub_config_Hotel_menu"
+            sequence="10"/>
+        <menuitem
+            id="hotel_amenities_menu"
+            name="Hotel Amenities"
+            action="hotel_amenities_action"
+            parent="sub_config_Hotel_menu"
+            sequence="20"/>
+        <menuitem
+            id="hotel_policies_menu"
+            name="Hotel Policies"
+            action="hotel_policies_action"
+            parent="sub_config_Hotel_menu"
+            sequence="30"/>
+        <menuitem
+            id="Room_config_menu"
+            name="Rooms"
+            parent="configuration_menu"
+            sequence="20"/>
+
+        <menuitem
+            id="room_type_menu"
+            name="Room Type"
+            action="room_type_action"
+            parent="Room_config_menu"
+            sequence="30"/>
+        <menuitem
+            id="room_price_menu"
+            name="Room Price"
+            action="room_price_action"
+            parent="Room_config_menu"
+            sequence="20"/>
+        <menuitem
+            id="hotel_room_menu"
+            name="Add Rooms"
+            action="hotel_room_action"
+            parent="Room_config_menu"
+            sequence="10"/>
+        <menuitem
+            id="Room_specification_menu"
+            name="Room Specification"
+            action="room_specification_action"
+            parent="Room_config_menu"
+            sequence="30"/>
+        <menuitem
+            id="season_menu"
+            name="Season"
+            action="season_action"
+            parent="configuration_menu"
+            sequence="30"/>
+        <!-- <menuitem
+            id="guest_details_menu"
+            name="Guest Details"
+            action="hotel_guest_action"
+            parent="configuration_menu"
+            sequence="40"/> -->
+        <menuitem
+            id="guest__menu"
+            name="Guest Details"
+            parent="configuration_menu"
+            sequence="40"/>
+        <menuitem
+            id="guest_details_menu"
+            name="Guest Details"
+            action="hotel_guest_action"
+            parent="guest__menu"
+            sequence="10"/>
+
+    
+        <menuitem
+            id="House_Keeping_menu"
+            name="Hotel Maintenance and Housekeeping"
+            parent="configuration_menu"
+            sequence="50"/>   
+        <menuitem
+            id="maintenance_type_menu"
+            name="Maintenance Type"
+            action="action_housekeeping_maintenance_type"
+            parent="House_Keeping_menu"
+            sequence="10"/>
+        <menuitem
+            id="maintenance_service_menu"
+            name="Maintenance Service"
+            action="action_housekeeping_maintenance_service"
+            parent="House_Keeping_menu"
+            sequence="20"/>
+        <menuitem
+            id="maintenance_planning_menu"
+            name="Maintenance Planning"
+            action="action_housekeeping_planning"
+            parent="House_Keeping_menu"
+            sequence="50"/>
+        <menuitem
+            id="House_Keeping_staff_menu"
+            name="Housekeeping Staff"
+            parent="configuration_menu"
+            sequence="70"/>
+
+        <menuitem
+            id="maintenance_Staff_menu"
+            name="Maintenance Staff"
+            action="action_housekeeping_staff"
+            parent="House_Keeping_staff_menu"
+            sequence="30"/>
+        <menuitem
+            id="maintenance_Staff_entry_menu"
+            name="Maintenance Staff Entry"
+            action="action_housekeeping_staff_entry"
+            parent="House_Keeping_staff_menu"
+            sequence="40"/>
+
+        <menuitem
+            id="maintenance_checklist_service_menu"
+            name="Maintenance Checklist Service"
+            action="action_maintenance_checklist_service"
+            parent="House_Keeping_staff_menu"
+            sequence="55"/>
+            
+        <!-- <menuitem
+            id="maintenance_report_issue_menu"
+            name="Maintenance Issue"
+            action="action_housekeeping_report_issue"
+            parent="House_Keeping_staff_menu"
+            sequence="60"/> -->
+
+        <menuitem
+            id="maintenance_report_menu"
+            name="Maintenance Report "
+            action="action_housekeeping_report"
+            parent="House_Keeping_staff_menu"
+            sequence="70"/>
+        <menuitem
+            id="Resturant_menu"
+            name="Resturant"
+            parent="configuration_menu"
+            sequence="60"/>
+        <menuitem
+            id="maintenance_Resturant_menu"
+            name="Resturant"
+            action="action_restaurant"
+            parent="Resturant_menu"
+            sequence="10"/>
+        <menuitem
+            id="maintenance_Resturant_food_menu"
+            name="Food"
+            action="action_food"
+            parent="Resturant_menu"
+            sequence="20"/>
+</odoo>
+<!-- <menuitem
+            id="guest_details_menu"
+            name="Guest Details"
+            action="hotel_guest_action"
+            parent="guest__menu"
+            sequence="10"/> -->
